@@ -4,7 +4,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
-import java.util.List;
+import java.util.Set;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -26,7 +26,7 @@ public class Post {
     private String title;
     private String content;
     private String category;
-    private List<String> tags;
+    private Set<String> tags;
 
     @CreationTimestamp
     @Column(updatable = false)

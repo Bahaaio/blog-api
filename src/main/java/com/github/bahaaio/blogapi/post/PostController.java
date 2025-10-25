@@ -7,6 +7,7 @@ import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -27,13 +28,13 @@ public class PostController {
     }
 
     @PostMapping
-    ResponseEntity<Post> createPost(@RequestBody PostRequest request) {
+    ResponseEntity<Post> createPost(@Valid @RequestBody PostRequest request) {
         Post saved = postService.createPost(request);
         return ResponseEntity.created(URI.create("/posts/" + saved.getId())).body(saved);
     }
 
     @PutMapping("/{id}")
-    ResponseEntity<Post> updatePost(@RequestBody PostRequest request, @PathVariable Long id) {
+    ResponseEntity<Post> updatePost(@Valid @RequestBody PostRequest request, @PathVariable Long id) {
         return ResponseEntity.ok(postService.updatePost(id, request));
     }
 
