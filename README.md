@@ -196,6 +196,28 @@ DELETE /posts/{id}
 
 Returns `204 No Content` or `404 Not Found`
 
+## Validation
+
+The API includes input validation for all POST/PUT requests:
+
+| Field    | Constraints              |
+| -------- | ------------------------ |
+| title    | 4-200 characters, unique |
+| content  | Max 10,000 characters    |
+| category | Max 50 characters        |
+| tags     | Max 10 tags, non-null    |
+
+### Validation Error Response
+
+Returns `400 Bad Request` with field-specific error messages:
+
+```json
+[
+  { "title": "size must be between 4 and 200" },
+  { "content": "must not be blank" }
+]
+```
+
 ---
 
 > Inspired by [roadmap.sh Blogging Platform API](https://roadmap.sh/projects/blogging-platform-api)
