@@ -1,0 +1,22 @@
+services:
+  db:
+    image: mysql:8.0
+    container_name: blog_api
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: blogDB
+      MYSQL_USER: bahaa
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: password
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      backend:
+
+volumes:
+  db_data:
+
+networks:
+  backend:
