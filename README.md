@@ -207,7 +207,9 @@ The API includes input validation for all POST/PUT requests:
 | category | Max 50 characters        |
 | tags     | Max 10 tags, non-null    |
 
-### Validation Error Response
+### Error Responses
+
+#### Validation Error
 
 Returns `400 Bad Request` with field-specific error messages:
 
@@ -216,6 +218,19 @@ Returns `400 Bad Request` with field-specific error messages:
   { "title": "size must be between 4 and 200" },
   { "content": "must not be blank" }
 ]
+```
+
+#### Not Found Error
+
+Returns `404 Not Found` when requesting non-existent posts:
+
+```json
+{
+  "timestamp": "2024-01-01T12:00:00",
+  "status": 404,
+  "error": "Not Found",
+  "path": "/posts/100"
+}
 ```
 
 ---
